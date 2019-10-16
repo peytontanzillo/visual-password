@@ -8,7 +8,7 @@ class Row extends React.Component {
     const { squareCount } = this.props
     const squares = [];
     for (let i = 0; i < squareCount; i++) {
-      squares.push(<Square/>)
+      squares.push(<Square key={i}/>)
     }
     return (
       <div className="row">

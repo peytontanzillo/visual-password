@@ -9,7 +9,7 @@ class App extends React.Component {
     const { rowCount, squareCount } = this.props
     const grid = [];
     for (let i = 0; i < rowCount; i++) {
-      grid.push(<Row squareCount={squareCount} />)
+      grid.push(<Row key={i} squareCount={squareCount} />)
     }
     return (
       <div className="grid">
