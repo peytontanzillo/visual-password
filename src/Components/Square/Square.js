@@ -32,7 +32,7 @@ class Square extends React.Component {
   }
 
   render() {
-    console.log(this.state.symbolIndex)
+    // console.log(this.state.symbolIndex)
     return (
       <div className="square" onClick={this.clickHandler}>
         {this.fullSymbols[this.state.symbolIndex]}
