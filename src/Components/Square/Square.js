@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Square.css';
 
-function Square (props) {
+function Square () {
 
     const [symbolIndex, setSymbolIndex] = useState(0)
     const fullSymbols = [

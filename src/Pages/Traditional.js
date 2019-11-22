@@ -2,17 +2,16 @@ import React from 'react';
 
 import Page from './Page'
 
-import VisualPassword from '../Components/VisualPassword/VisualPassword'
 import InputBox from '../Components/InputBox/InputBox'
 
-function Visual() {
+function Traditional() {
   return (
     <Page>
       <h1>Login</h1>
       <InputBox title="Username"/>
-      <VisualPassword width={5} height={5}/>
+      <InputBox title="Password"/>
     </Page>
   )
 }
 
-export default Visual;
+export default Traditional;
