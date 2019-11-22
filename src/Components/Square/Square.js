@@ -21,7 +21,6 @@ function Square (props) {
     }
   }
 
-  console.log(symbolIndex)
   return (
     <div className="square" onClick={clickHandler}>
       {fullSymbols[symbolIndex]}
