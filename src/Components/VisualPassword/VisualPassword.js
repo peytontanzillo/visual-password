@@ -2,39 +2,44 @@ import React, {useState} from 'react'
 
 import Row from '../Row/Row'
 
+
 function VisualPassword({
   width,
   height,
   highlightColor = "red"
 }) {
-  const [selectedBox, setSelectedBox] = useState(undefined)
 
-  const handleKeyPress = (e) => {
-    if (selectedBox) {
-
-    }
+  const initialGrid = []
+  const gridLength = width * height
+  for (let i = 0; i < gridLength; i++) {
+    initialGrid.push("")
   }
 
-  const handleSquareFocus = (square) => {
-    square.target.style.borderColor = highlightColor
-    if (selectedBox) {
-      selectedBox.style.borderColor = "black"
-    }
-    setSelectedBox(square.target)
+  const [gridArray, setGridArray] = useState(initialGrid)
+
+  const handleChange = (id, value) => {
+    const newGrid = gridArray
+    newGrid[id] = value
+    setGridArray(newGrid)
   }
 
-  const handleSquareBlur = (square) => {
-    square.target.style.borderColor = "black"
-    if (selectedBox === square) {
-      setSelectedBox(undefined)
-    }
+  const submitVisualPassword = () => {
+    console.log(gridArray)
   }
 
   const grid = [];
   for (let i = 0; i < height; i++) {
-    grid.push(<Row key={i} squareCount={width} rowNumber={i} onSquareFocus={handleSquareFocus} onSquareBlur={handleSquareBlur}/>)
+    grid.push(<Row key={i} rowNumber={i} squareCount={width} onSquareChange={handleChange}/>)
   }
-  return (<div className="grid">{grid}</div>)
+
+  return (
+    <div>
+      <div className="grid">
+        {grid}
+      </div>
+      <button onClick={submitVisualPassword}>Submit</button>
+    </div>
+  )
 }
 
 export default VisualPassword;

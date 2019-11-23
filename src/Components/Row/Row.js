@@ -6,12 +6,12 @@ import Square from '../Square/Square'
 function Row({
   rowNumber,
   squareCount,
-  onSquareFocus,
-  onSquareBlur,
+  onSquareChange,
 }) {
   const squares = [];
   for (let i = 0; i < squareCount; i++) {
-    squares.push(<Square key={i} onFocus={onSquareFocus} onBlur={onSquareBlur}/>)
+    const squareID = rowNumber * squareCount + i
+    squares.push(<Square key={i} squareID={squareID} onChange={onSquareChange}/>)
   }
   return (
     <div className="row">
