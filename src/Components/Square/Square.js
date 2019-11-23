@@ -1,30 +1,25 @@
 import React, {useState} from 'react';
 import './Square.css';
 
-function Square () {
+function Square({
+  style,
+  onFocus,
+  onBlur,
+}) {
 
-    const [symbolIndex, setSymbolIndex] = useState(0)
-    const fullSymbols = [
-      <div key={0} />,
-      <div key={1} className="symbol-thing dot red" />,
-      <div key={2} className="symbol-thing blue" />,
-      <div key={3} className="symbol-thing dot pink" />,
-      <div key={4} className="symbol-thing green" />,
-      <div key={5} className="symbol-thing dot purple" />,
-      <div key={6} className="symbol-thing orange" />,
-    ]
+  const [squareValue, setSquareValue] = useState('')
 
-  const clickHandler = () => {
-    setSymbolIndex(symbolIndex + 1)
-    if (symbolIndex >= fullSymbols.length - 1) {
-      setSymbolIndex(0)
+  const handleChange = (e) => {
+    const value = e.target.value
+    if (value.length > 1) {
+      setSquareValue(value.charAt(value.length - 1))
+    } else {
+      setSquareValue(value)
     }
   }
 
   return (
-    <div className="square" onClick={clickHandler}>
-      {fullSymbols[symbolIndex]}
-    </div>
+    <input className="square" style={style} onFocus={onFocus} onBlur={onBlur} onChange={handleChange} value={squareValue}/>
   );
 }
 
