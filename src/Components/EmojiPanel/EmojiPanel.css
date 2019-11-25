@@ -1,0 +1,7 @@
+.emoji-panel {
+  position: absolute;
+  margin-top: 50px;
+  width: 100px;
+  height: 250px;
+  background-color: red;
+}
