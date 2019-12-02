@@ -2,13 +2,13 @@ import React from 'react';
 import './InputBox.css';
 
 
-class InputBox extends React.Component {  
+class InputBox extends React.Component {
   render() {
-    const { title } = this.props
+    const { title, type = "text", onChange } = this.props
     return (
       <div className="input-box">
         <label>{title}</label>
-        <input type="text" placeholder=""/>
+        <input type={type} placeholder="" onChange={onChange}/>
       </div>
     );
   }

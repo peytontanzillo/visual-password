@@ -11,7 +11,7 @@ function Row({
   const password = useContext(PasswordContext)
   const squares = [];
   for (let i = 0; i < password.width; i++) {
-    const squareID = rowNumber * password.width + i
+    const squareID = password.width * i + rowNumber
     squares.push(<Square key={i} squareID={squareID}/>)
   }
   return (
