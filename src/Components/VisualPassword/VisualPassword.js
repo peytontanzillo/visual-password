@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 
+import './VisualPassword.css'
+
 import Row from '../Row/Row'
 
 import EmojiPanel from '../EmojiPanel/EmojiPanel'
@@ -34,20 +36,24 @@ function VisualPassword({
     height: height,
     highlightColor: highlightColor,
     updatePasswordData: (id, value) => {
-      const newGrid = passwordState.grid
-      newGrid[id] = value
-      setPasswordState({grid: newGrid, selected: passwordState.selected})
+      if (id !== -1) {
+        const newGrid = passwordState.grid
+        newGrid[id] = value
+        setPasswordState({grid: newGrid, selected: passwordState.selected})
+      }
     },
     selectSquare: (s) => {
-      console.log('select', s, passwordState)
       setPasswordState({grid: passwordState.grid, selected: s})
     },
     unselectSquare: (s) => {
-      console.log('unselect', s, passwordState)
       if (passwordState.selected === s) {
         setPasswordState({grid: passwordState.grid, selected: undefined})
       }
     },
+    setEmoji: (emoji) => {
+      passContextData.updatePasswordData(parseInt(passwordState.selected.name ? passwordState.selected.name : 0), emoji)
+    },
+    grid: passwordState.grid
   }
 
   return (
@@ -56,7 +62,7 @@ function VisualPassword({
         <div className="grid">
           {grid}
         </div>
-        {passwordState.selected ? <EmojiPanel/> : false}
+        {<EmojiPanel/>}
       </div>
       <button onClick={submitVisualPassword}>Submit</button>
     </PasswordContext.Provider>

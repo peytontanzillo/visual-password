@@ -1,7 +1,14 @@
 .emoji-panel {
-  position: absolute;
-  margin-top: 50px;
   width: 100px;
   height: 250px;
-  background-color: red;
+  border: 1px solid black;
+  margin: 0 20px;
+  float: top;
+  text-overflow: clip;
+  text-align: center;
+  overflow: auto;
+}
+
+.emoji-panel > span {
+  cursor: pointer;
 }

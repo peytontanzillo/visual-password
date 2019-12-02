@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import './Square.css';
 
 import PasswordContext from '../../Contexts/PasswordContext'
@@ -10,8 +10,6 @@ function Square({
 }) {
   const password = useContext(PasswordContext)
 
-  const [squareValue, setSquareValue] = useState('')
-
   const onFocus = (e) => {
     e.target.style.borderColor = password.highlightColor
     password.selectSquare(e.target)
@@ -19,7 +17,6 @@ function Square({
 
   const onBlur = (e) => {
     e.target.style.borderColor = "black"
-    password.unselectSquare(e.target)
   }
 
   const handleChange = (e) => {
@@ -27,13 +24,12 @@ function Square({
     if (newValue.length > 1) {
       newValue = newValue.charAt(newValue.length - 1)
     }
-    setSquareValue(newValue)
     password.updatePasswordData(parseInt(e.target.name), newValue)
   }
 
   return (
     <>
-      <input name={squareID} className="square" style={style} onFocus={onFocus} onBlur={onBlur} onChange={handleChange} value={squareValue}/>
+      <input name={squareID} className="square" style={style} onFocus={onFocus} onBlur={onBlur} onChange={handleChange} value={password.grid[squareID]}/>
     </>
   );
 }
