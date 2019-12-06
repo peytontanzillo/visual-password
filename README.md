@@ -1,3 +1,7 @@
+### Access the application at this URL:
+https://master.d15mfgrzr1reh.amplifyapp.com/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
